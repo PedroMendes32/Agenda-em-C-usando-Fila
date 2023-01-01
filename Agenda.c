@@ -111,3 +111,27 @@ void adicionarTarefa(void)
 	}
 	while ( * string );
 }
+
+void armazenaTarefa( char * tarefa )
+{
+	if ( prox_posicao == MAX_TAREFAS )
+	{
+		printf(" A lista de tarefas está cheia !\n");
+		return;
+	}
+	else
+	{
+		t[prox_posicao] = tarefa;
+		prox_posicao++;
+	}
+}
+
+void verFila(void)
+{
+	int i;
+	
+	for ( i = posicao_ant; i < prox_posicao; i++ )
+	{
+		printf(" Tarefa %d. -> %s \n",i++,t[i]);
+	}
+}
