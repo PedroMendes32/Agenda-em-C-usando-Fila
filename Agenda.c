@@ -85,7 +85,7 @@ void adicionarTarefa(void)
 	do
 	{
 		printf(" Digite a tarefa %d : ",prox_posicao++);
-		gets(s);
+		gets(string);
 		
 		if ( *string == 0 )
 		{
@@ -93,7 +93,7 @@ void adicionarTarefa(void)
 		}
 		else
 		{
-			tarefa = (char*) malloc (strlen(s) + sizeof(char));
+			tarefa = (char*) malloc (strlen(string) + sizeof(char));
 			
 			if ( tarefa == NULL )
 			{
@@ -132,6 +132,34 @@ void verFila(void)
 	
 	for ( i = posicao_ant; i < prox_posicao; i++ )
 	{
-		printf(" Tarefa %d. -> %s \n",i++,t[i]);
+		printf(" Tarefa %d. -> %s \n",i+1,t[i]);
+	}
+}
+
+char * recuperaTarefa(void)
+{
+	if ( posicao_ant == prox_posicao )
+	{
+		printf(" Sem Tarefas! \n");
+		return NULL;
+	}
+	else
+	{
+		posicao_ant++;
+		return t[posicao_ant--];
+	}
+}
+
+void deletarTarefa(void)
+{
+	char *tarefa;
+	
+	if ( (tarefa = recuperaTarefa()) == NULL )
+	{
+		return;
+	}
+	else
+	{
+		printf(" %s\n",tarefa);
 	}
 }
