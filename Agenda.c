@@ -42,6 +42,8 @@ int main(void)
 		mostraMenu();
 		gets(opcao);
 		
+		system("cls");
+		
 		*opcao = toupper(*opcao);
 		
 		switch ( *opcao )
@@ -82,9 +84,11 @@ void adicionarTarefa(void)
 	char string[256];
 	char * tarefa;
 	
+	printf("\t\t\t OBS: Para terminar de inserir tarefas aperte enter sem nenhuma string! \n");
+
 	do
-	{
-		printf(" Digite a tarefa %d : ",prox_posicao++);
+	{	 
+		printf(" Digite a tarefa %d : ",prox_posicao+1);
 		gets(string);
 		
 		if ( *string == 0 )
@@ -110,6 +114,8 @@ void adicionarTarefa(void)
 		}
 	}
 	while ( * string );
+	
+	system("cls");
 }
 
 void armazenaTarefa( char * tarefa )
@@ -130,10 +136,16 @@ void verFila(void)
 {
 	int i;
 	
+	
 	for ( i = posicao_ant; i < prox_posicao; i++ )
 	{
 		printf(" Tarefa %d. -> %s \n",i+1,t[i]);
 	}
+	
+	printf("\n\n\n");
+	system("pause");
+	
+	system("cls");
 }
 
 char * recuperaTarefa(void)
@@ -141,12 +153,15 @@ char * recuperaTarefa(void)
 	if ( posicao_ant == prox_posicao )
 	{
 		printf(" Sem Tarefas! \n");
+		system("pause");
+		system("cls");
+		
 		return NULL;
 	}
 	else
 	{
 		posicao_ant++;
-		return t[posicao_ant--];
+		return t[posicao_ant-1];
 	}
 }
 
@@ -160,6 +175,11 @@ void deletarTarefa(void)
 	}
 	else
 	{
-		printf(" %s\n",tarefa);
+		printf(" Tarefa deletada -> %s\n",tarefa);
 	}
+	
+	printf("\n\n\n");
+	system("pause");
+	
+	system("cls");
 }
